@@ -1,0 +1,28 @@
+<div class="header">
+  <h1>NBFC GIS Viewer</h1>
+</div>
+
+<div>
+  <input type="file" (change)="onFileSelected($event)" />
+  <button (click)="onUpload()" [disabled]="!selectedFile">Upload</button>
+  <!-- I want a drop menu with a list of all available layers in the database -->
+  <!-- I want to select from within the previous list (with a checkbox for instance) wich layer to show on the map-->
+  <div>
+    <label for="layerSelect">Select Layer: </label>
+    <select id="layerSelect" (change)="onLayerSelected($event)">
+      <option *ngFor="let layer of layers" [value]="layer._id">{{ layer.properties.vincolo }} - {{ layer.properties.nome }}</option>
+    </select>
+  </div>
+
+</div>
+<br>
+<div style="display: flex; flex-direction: column; height: 100vh;">
+  <div style="flex: 1;" id="map"></div>
+  <!-- <input type="file" (change)="uploadFile($event)" /> -->
+</div>
+
+
+
+<div class="footer">
+  <p>© 2024 - CINECA</p>
+</div>
